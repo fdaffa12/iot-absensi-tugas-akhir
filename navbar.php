@@ -13,6 +13,7 @@
 			<a class="nav-item nav-link text-white navlink <?= $aktif == 'visi_misi' ? 'active' : '' ?>" href="visi_misi.php">VISI MISI</a>
 			<a class="nav-item nav-link text-white navlink <?= $aktif == 'bukutamu' ? 'active' : '' ?>" href="bukutamu.php">BUKUTAMU</a>
 			<a class="nav-item nav-link text-white navlink <?= $aktif == 'tentang_website' ? 'active' : '' ?>" href="tentang_website.php">TENTANG WEBSITE</a>
+			<a class="nav-item nav-link text-white navlink <?= $aktif == 'lokasi' ? 'active' : '' ?>" href="lokasi.php">LOKASI</a>
 		</div>
 	</div>
 </nav>
