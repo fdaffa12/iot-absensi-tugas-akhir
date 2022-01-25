@@ -1,0 +1,1 @@
+2021 © Copyright by Faiz Daffa Kusuma Laksana.</a> 
