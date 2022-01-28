@@ -19,6 +19,7 @@ include_once("config.php");
 	  $open = 'dashboard';
 	  include "header.php"; 
 	?>
+	<title>Hasil Perhitungan K-Means</title>
 		<!-- <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 		<style>
 			table {
@@ -89,13 +90,13 @@ $(document).ready(function() {
 
     function plot() {
 		var data = [{
-			label: "C1",
+			label: "C1 (Rajin)",
 			data: <?php echo $row2['C1'];?>
 		}, {
-			label: "C2",
+			label: "C2 (Biasa Saja)",
 			data: <?php echo $row2['C2'];?>
 		}, {
-			label: "C3",
+			label: "C3 (Malas)",
 			data: <?php echo $row2['C3'];?>
 		}];
 
@@ -136,7 +137,7 @@ $(document).ready(function() {
 		      <div class="container-fluid">
 		        <div class="row mb-2">
 		          <div class="col-sm-6">
-		            <h1>Selamat Datang Di Sistem Absensi</h1>
+		            <h1>Hasil Akhir Perhitungan K-Means</h1>
 		          </div>
 		          <div class="col-sm-6">
 		            <ol class="breadcrumb float-sm-right">
@@ -155,7 +156,7 @@ $(document).ready(function() {
 
 		            <!-- /.row -->
 		            <div class="row">
-						<div class="col-md-5">
+						<div class="col-md-12">
 							<table style="margin-left: auto; margin-right: auto;" class="table table-hover">
 								<thead>
 									<tr style="height: 25px; background-color: #000080; font-size: 11px;" bgcolor="#000099">
@@ -177,7 +178,7 @@ $(document).ready(function() {
 								?>
 															<tr style="height: 15px;">
 																<td style="text-align: left;">&nbsp;<?php echo $row3['id']?></td>
-																<td style="text-align: left;">&nbsp;<?php echo $row3['nama']?></td>
+																<td style="text-align: center;">&nbsp;<?php echo $row3['nama']?></td>
 																<td style="text-align: center;">&nbsp;<?php echo $row3['tanggal']?></td>
 																<td style="text-align: center; <?php if($row3['min']=='C1') echo 'background-color: #ffdd33;';?>">&nbsp;<strong><?php if($row3['min']=='C1') echo '1';?></strong></td>
 																<td style="text-align: center; <?php if($row3['min']=='C2') echo 'background-color: #ffdd33;';?>">&nbsp;<strong><?php if($row3['min']=='C2') echo '1';?></strong></td>
@@ -198,7 +199,7 @@ $(document).ready(function() {
 								</tfoot>
 							</table>						
 						</div>
-		                <div class="col-md-7">
+		                <div class="col-md-12">
 		                    <div class="panel panel-default">
 		                        <div class="panel-heading">
 		                            Hasil
@@ -214,59 +215,68 @@ $(document).ready(function() {
 		                    <!-- /.panel -->
 		                </div>
 						 <div class="col-md-12">
-							<p><strong style="text-decoration: underline;">Keterangan :</strong></p>
-							<p>Jadi kecamatan yang termasuk cluster 1 (C1) dan cluster 2 (C2) sebagai berikut :</p>
-							<p>Cluster Satu ( C1 )</p>
-							<p>
-								<ol>
-								<?php						
-									if ($result3->num_rows > 0) {
-										while($row3 = $result3->fetch_assoc()) {	
-											if($row3['min']=='C1'){
-								?>						
-															<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
-								<?php
+				 		<p><strong style="text-decoration: underline;">Keterangan :</strong></p>
+						<p>Jadi kecamatan yang termasuk cluster 1 (C1) dan cluster 2 (C2) sebagai berikut :</p>
+							<div class="row">
+								<div class="col-md-4">
+									<p>Cluster Rajin ( C1 )</p>
+								<p>
+									<ol>
+									<?php						
+										if ($result3->num_rows > 0) {
+											while($row3 = $result3->fetch_assoc()) {	
+												if($row3['min']=='C1'){
+									?>						
+																<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
+									<?php
+												}
 											}
 										}
-									}
-									mysqli_data_seek($result3,0);
-								?>	
-														</ol>
-													</p>
-													<p>Cluster Satu ( C2 )</p>
-													<p>
-														<ol>
-								<?php						
-									if ($result3->num_rows > 0) {
-										while($row3 = $result3->fetch_assoc()) {
-											if($row3['min']=='C2'){		
-								?>						
-															<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
-								<?php
+										mysqli_data_seek($result3,0);
+									?>	
+									</ol>
+								</p>
+								</div>
+
+								<div class="col-md-4">
+								<p>Cluster Biasa Saja ( C2 )</p>
+								<p>
+									<ol>
+									<?php						
+										if ($result3->num_rows > 0) {
+											while($row3 = $result3->fetch_assoc()) {
+												if($row3['min']=='C2'){		
+									?>						
+																<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
+									<?php
+												}
 											}
 										}
-									}
-									mysqli_data_seek($result3,0);
-								?>	
-														</ol>
-													</p>
-													<p>Cluster Satu ( C3 )</p>
-													<p>
-														<ol>
-								<?php						
-									if ($result3->num_rows > 0) {
-										while($row3 = $result3->fetch_assoc()) {	
-											if($row3['min']=='C3'){
-								?>						
-															<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
-								<?php
+										mysqli_data_seek($result3,0);
+									?>	
+									</ol>
+								</p>
+								</div>
+								<div class="col-md-4">
+								<p>Cluster Malas ( C3 )</p>
+								<p>
+															<ol>
+									<?php						
+										if ($result3->num_rows > 0) {
+											while($row3 = $result3->fetch_assoc()) {	
+												if($row3['min']=='C3'){
+									?>						
+																<li>(Id: <?php echo $row3['id'];?>). <?php echo $row3['nama'];?> (<?php echo $row3['tanggal'];?>)</li>
+									<?php
+												}
 											}
 										}
-									}
-									mysqli_data_seek($result3,0);
-								?>	
-								</ol>
-							</p>
+										mysqli_data_seek($result3,0);
+									?>	
+									</ol>
+								</p>
+								</div>
+						 	</div>
 						 </div>
 		            </div>
 		        </div>

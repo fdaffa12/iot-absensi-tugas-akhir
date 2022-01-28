@@ -429,11 +429,11 @@ $conn->close();
 									$jam_kembali += $row['jam_kembali'];
 									$jam_pulang += $row['jam_pulang'];
 								?>
-										<td style="text-align: left;">&nbsp;<?php echo $row['id'];?></td>
-										<td style="text-align: right;">&nbsp;<?php echo $row['jam_masuk'];?></td>
-										<td style="text-align: right;">&nbsp;<?php echo $row['jam_istirahat'];?></td>
-										<td style="text-align: right;">&nbsp;<?php echo $row['jam_kembali'];?></td>
-										<td style="text-align: right;">&nbsp;<?php echo $row['jam_pulang'];?></td>
+										<td style="text-align: center;">&nbsp;<?php echo $row['id'];?></td>
+										<td style="text-align: center;">&nbsp;<?php echo $row['jam_masuk'];?></td>
+										<td style="text-align: center;">&nbsp;<?php echo $row['jam_istirahat'];?></td>
+										<td style="text-align: center;">&nbsp;<?php echo $row['jam_kembali'];?></td>
+										<td style="text-align: center;">&nbsp;<?php echo $row['jam_pulang'];?></td>
 									</tr>
 								<?php
 								    }
